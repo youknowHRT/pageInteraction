@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS 手风琴</title>
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #333;
+    }
+
+    .wrap {
+      display: flex;
+      width: 90vw;
+    }
+
+    .card {
+      background-size: auto 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 50px;
+      color: #fff;
+      flex: 0.5;
+      cursor: pointer;
+      height: 80vh;
+      position: relative;
+      margin: 10px;
+      transition: .7s cubic-bezier(0.05, 0.6, 0.4, 0.9);
+      overflow: hidden;
+    }
+
+    .card h3 {
+      flex: .1;
+      font-size: 14px;
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      margin: 0;
+      transition: 0s ease-in 0s;
+    }
+
+    .card.active {
+      flex: 5;
+    }
+
+    .card.active h3 {
+      opacity: 1;
+      transition: 0.3s ease-in 0.4s;
+    }
+
+    @media(max-width:500px) {
+      .wrap {
+        width: 100vw;
+      }
+
+      .card:nth-child(4) {
+        display: none;
+      }
+
+      .card:nth-child(5) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card active" style="background-color: #f1c40f;">
+      <h3>JAKIRO</h3>
+    </div>
+    <div class="card" style="background-color:#2ecc71">
+      <h3>TIDEHUNTER</h3>
+    </div>
+    <div class="card" style="background-color:#3498db">
+      <h3>SVEN</h3>
+    </div>
+    <div class="card" style="background-color:#e74c3c">
+      <h3>WINDRUNNER</h3>
+    </div>
+    <div class="card" style="background-color:#9b59b6">
+      <h3>KUNKAA</h3>
+    </div>
+  </div>
+</body>
+<script>
+  var wrap = document.getElementsByClassName('wrap')[0]
+  var cards = wrap.getElementsByClassName('card')
+
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].addEventListener('mouseover', function () {
+      removeActive()
+      this.className = "card active"
+    })
+  }
+  function removeActive() {
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].className = "card"
+    }
+  }
+</script>
+
+</html>
